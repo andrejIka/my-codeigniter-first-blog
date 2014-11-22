@@ -15,7 +15,6 @@ class Images_model extends CI_Model {
         return $this->db->count_all("gallery_images");
     }
 
-
     public function get_all_images(){ 
         $query = $this->db->get('gallery_images');
         return $query->result(); 

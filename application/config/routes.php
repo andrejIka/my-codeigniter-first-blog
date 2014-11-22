@@ -51,7 +51,7 @@ $route['add_post'] = 'posts/add_post';
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "posts";
 $route['404_override'] = '';
 
 

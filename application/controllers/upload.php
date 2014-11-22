@@ -16,21 +16,7 @@ class Upload extends CI_Controller {
 	public function index()
 	{
 
-		if($this->input->post('empty_folder')=='yes'){
-			if( delete_files('./assets/uploads/') ){
-				$this->images_model->remove_all_images( ); 
-				$this->session->set_flashdata('message', "<div class='alert alert-success'>  Your had cleared images directory with success!</div>");
-				// redirect('/upload/');
-			} 
-		}
-
-				// echo $this->session->flashdata('message');
 		$data['all_images'] = $this->images_model->get_all_images( );
-		// echo "<pre>";
-			// print_r($data['all_images']);
-		// echo "</pre>";
-
-		// print_r($data['all_images']);
 
 		if( $this->input->post('submit') ){
 
@@ -38,6 +24,7 @@ class Upload extends CI_Controller {
 			$config['upload_path'] = './assets/uploads/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']  = '10000';
+			$config['encrypt_name'] = TRUE; 
 			$config['max_width']  = '10024';
 			$config['max_height']  = '7068';
 			$data['file_errors'] = '';
@@ -46,20 +33,14 @@ class Upload extends CI_Controller {
 	 
 
 			if ( ! $this->upload->do_upload()){
-				// $data['all_images'] = $this->images_model->get_all_images( );
 				$data['file_errors'] = "<div class='alert alert-danger'>".$this->upload->display_errors()."</div>";
 			}
 			else{
-				// $data['file_errors'] = '';
 				$data['upload_data'] =  $this->upload->data() ;
 				$image_src = $data['upload_data']['file_name'];
 				
-				// print_r($data['upload_data']);
 				$thumbnail = $data['upload_data']['raw_name'].'_thumb'.$data['upload_data']['file_ext'];
 				// start image manipulation
-				 // $image_manipulation = $data['upload_data']['file_path'].$image_src;
-				
-
 				$config['image_library'] = 'gd2';
 				$config['source_image'] = './assets/uploads/'.$image_src; 
 				$config['maintain_ratio'] = FALSE;
@@ -71,12 +52,8 @@ class Upload extends CI_Controller {
 				$this->image_lib->initialize($config);
 				$this->image_lib->resize();
 				
-
-				// echo $this->image_lib->display_errors();
-
 	            $this->images_model->add_image($thumbnail,$image_src); 
-				// $data['file_errors'] = "<div class='alert alert-success'> Your file: has been saved with success!</div>";
-				// print_r($data);
+				
 				$this->session->set_flashdata('message', "<div class='alert alert-success'> Your file: has been saved with success!</div>");
 				redirect('/upload/');
 				 
@@ -86,16 +63,65 @@ class Upload extends CI_Controller {
 
 	 }
 
-	 public function delete_image(){
-	 	// echo "111";
-	 	// $this->load->helper("file");
-		// unlink($path);
+	 public function export(){
 
-		$image_info_result = $this->images_model->get_current_image_info($this->uri->segment(3)) ;
-		$path = "Z:/home/localhost/www/ci/assets/uploads/";
-		unlink($path.$image_info_result[0]->image_url);
-		unlink($path.$image_info_result[0]->thumb_url);
+		$file_name = "./assets/uploads/7a1e793bc626fc435dc575432dff37e4.jpg";
+		$mime = 'application/force-download';
+		header('Pragma: public');    
+		header('Expires: 0');        
+		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+		header('Cache-Control: private',false);
+		header('Content-Type: '.$mime);
+		header('Content-Disposition: attachment; filename="'.basename($file_name).'"');
+		header('Content-Transfer-Encoding: binary');
+		header('Connection: close');
+		readfile($file_name);    
+		exit();
+
+	 }
+
+	 public function remove_all_images(){
+
+
+		$data['all_images'] = $this->images_model->get_all_images( ); 
+		$path =  $_SERVER['DOCUMENT_ROOT']."/ci/assets/uploads/";
+
+		foreach ($data['all_images'] as $image): 
+			$current_file =  $path.$image->image_url;
+			if (file_exists($current_file)) {
+
+				unlink($current_file); 
+			}  
+			$current_file =  $path.$image->thumb_url;
+			if (file_exists($current_file)) {
+				unlink($current_file); 
+
+			}  
+
+		endforeach; 
+		$this->images_model->remove_all_images( ); 
+
+		$this->session->set_flashdata('message', "<div class='alert alert-success'> Your files was successfuly  removed !</div>");
+		redirect('/upload/');
+
+	 }
+
+
+	 public function delete_image(){
+	 	
+		$image_info_result = $this->images_model->get_current_image_info($this->uri->segment(3)) ; 
+		$path =  $_SERVER['DOCUMENT_ROOT']."/ci/assets/uploads/";
+		$file1 = $path.$image_info_result[0]->image_url;
+		$file2 = $path.$image_info_result[0]->thumb_url;
+
+		if (file_exists($file1)) {
+			unlink($path.$image_info_result[0]->image_url); 
+		}
+		if (file_exists($file2)) {  
+			unlink($path.$image_info_result[0]->thumb_url);
+		}
 		$this->images_model->delete_current_image();
+
 		$this->session->set_flashdata('message', "<div class='alert alert-info'> Your file has been removed with success!</div>");
 		redirect('/upload/');
 		
@@ -104,8 +130,6 @@ class Upload extends CI_Controller {
 
 }
 
-/* End of file upload.php */
-/* Location: ./application/controllers/upload.php */
 
 /* End of file upload.php */
 /* Location: ./application/controllers/upload.php */
