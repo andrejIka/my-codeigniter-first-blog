@@ -39,9 +39,12 @@ In the next plans are:
 - enable return to the selected page feature when enabling the pagination. possibly saving in cookies?;
 - implement captcha in all the required forms;
 - playing around with sending emails from gmail/mailchimp or another different smtp clients;
+- custom zip of the application + saving db dump. export as a file and send it by email. Delete saved dump via email;
+- manage the site via email messages.
 
 Hopefully will do in a week. Good luck for me!
 
 Cheers.
 
   
+    
