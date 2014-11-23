@@ -7,10 +7,10 @@ REQUIREMENTS:
 php5/MYSQL
 
 The next achievements after a week ago:
-~~ authorization ~~
-~~ connected upload and posts ~~
-- purely editable, added and remove features
-~~ export file feature ~~
+-  ~~authorization~~
+-  ~~connected upload and posts~~
+-  purely editable, added and remove features
+-  ~~export file feature~~
 
 In the next plans are:
 - to create strict structure of the application
