@@ -7,9 +7,15 @@ class Upload extends CI_Controller {
 		parent::__construct();
 		//Do your magic here
 		$this->load->helper(array('url','form', 'file')); 
-		$this->load->library(array('form_validation','pagination','session','image_lib')); 
+		$this->load->library(array('form_validation','pagination','session', 'image_lib', 'ion_auth')); 
+
+		if ( !$this->ion_auth->logged_in() ) 
+		{ 
+			redirect('auth', 'refresh');
+		}
 
 		$this->load->model('images_model');
+		$this->load->helper('chrome_logger');
 		
 	}
 
@@ -63,20 +69,57 @@ class Upload extends CI_Controller {
 
 	 }
 
-	 public function export(){
+	 public function export_images(){
 
-		$file_name = "./assets/uploads/7a1e793bc626fc435dc575432dff37e4.jpg";
-		$mime = 'application/force-download';
-		header('Pragma: public');    
-		header('Expires: 0');        
-		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-		header('Cache-Control: private',false);
-		header('Content-Type: '.$mime);
-		header('Content-Disposition: attachment; filename="'.basename($file_name).'"');
-		header('Content-Transfer-Encoding: binary');
-		header('Connection: close');
-		readfile($file_name);    
-		exit();
+	 	$this->load->library('zip');
+		$path =  $_SERVER['DOCUMENT_ROOT']."/ci/assets/uploads/";
+		$this->zip->read_dir($path, FALSE); 
+		$this->zip->download('all_images.zip');
+ 
+	 }
+
+	 public function export_images_list(){
+
+		// ChromePhp::table($_REQUEST);
+
+	 	// Load herlpers and libs
+		$this->load->helper('file');
+		$this->load->helper('download');
+		$this->load->dbutil();
+
+		// Making quesry from model
+		$query = $this->images_model->get_all_exported_images( );
+
+		// Generating CSV content
+		$delimiter = ",";
+		$newline = "\r\n";
+		$result_csv_data = $this->dbutil->csv_from_result($query, $delimiter, $newline);
+
+		// And download it to the user
+		force_download('export_images.csv', $result_csv_data);
+
+		// Define file params
+		// $path =  $_SERVER['DOCUMENT_ROOT']."/ci/assets/export/"; 
+		
+		// Saving files on the hosting folder - not necessary
+		// $csv_file = $path.'export_images.csv';
+		// write_file($csv_file, $result_csv_data);
+
+
+		// Set correct headers for the right download - not necessary
+		// header('Content-Description: File Transfer');
+		// header('Content-Type: application/csv');
+		// header('Content-Disposition: attachment; filename=export_images.csv');
+		// header('Expires: 0');  
+		// header('Content-Type: application/force-download');
+		// header('Cache-Control: must-revalidate, post-check=0, pre-check=0'); 
+		// header('Cache-Control: must-revalidate');
+		// header('Pragma: public');
+		// header('Content-Length: ' . filesize($csv_file));
+		// header('Content-Transfer-Encoding: binary');
+		// header('Connection: close');
+		// readfile($csv_file);    
+		// exit();
 
 	 }
 

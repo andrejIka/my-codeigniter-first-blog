@@ -3,9 +3,15 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="<?php echo site_url("/"); ?>assets/js/jquery.min.js"></script>
-    <script src="<?php echo site_url("/"); ?>assets/js/bootstrap.js"></script>  
+    <script src="<?php echo site_url("/"); ?>assets/js/jquery.min.js"></script>
+    <script src="<?php echo site_url("/"); ?>assets/js/bootstrap-datepicker.js"></script>  
     <script> 
       $(document).ready(function(){  
+
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true
+        });
 
         // $('form input:first').focus();  
 

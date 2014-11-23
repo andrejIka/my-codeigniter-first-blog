@@ -16,8 +16,9 @@ class Posts extends CI_Controller {
 			redirect('auth', 'refresh');
 		}
 		 $this->load->helper('chrome_logger');
-		 ChromePhp::warn($_REQUEST);
-		 ChromePhp::warn($_ENV);
+		 // ChromePhp::table($_REQUEST);
+		 // ChromePhp::table($_SESSION);
+		 // ChromePhp::warn($_ENV);
 		 // ChromePhp::log($_FILES);
 
 	}
@@ -64,7 +65,7 @@ class Posts extends CI_Controller {
 		$data["links"] = $this->pagination->create_links();
 
 
-		 ChromePhp::log($data);
+		ChromePhp::table($data);
 		$this->load->view('posts', $data);
 	} 
 
@@ -99,6 +100,7 @@ class Posts extends CI_Controller {
 
 			if($validated === FALSE){ 
 				$data['file_errors'] = "<div class='alert alert-danger'>Please fill in the form in a right order and then attach the file</div>";
+				// ChromePhp::table($data);
 				$this->load->view('add_post', $data);   
 			} 
 			else{  
@@ -136,11 +138,13 @@ class Posts extends CI_Controller {
 					$this->posts_model->add_post($image_src); 
 					$this->session->set_flashdata('message', "<div class='alert alert-info'> Your post has been added with success!<button type='button' class='close' data-dismiss='alert'> <span aria-hidden='true'>&times;</span> </button></div>");
 					// $this->load->view('add_post', $data);   
+					// ChromePhp::table($data['post']);
 					redirect('posts/');    
 				}
 			} 
         }
         else{
+			// ChromePhp::table($data);
 			$this->load->view('add_post', $data);  
         }
 	}
@@ -219,6 +223,31 @@ class Posts extends CI_Controller {
 			$this->load->view('edit_post', $data);  
         }
 	}
+
+	public function export_posts(){
+
+ 
+		// ChromePhp::table($_REQUEST);
+
+	 	// Load herlpers and libs
+		$this->load->helper('file');
+		$this->load->helper('download');
+		$this->load->dbutil();
+
+		// Making quesry from model
+		$query = $this->posts_model->get_all_exported_posts( );
+
+		// Generating CSV content
+		$delimiter = ",";
+		$newline = "\r\n";
+		$result_csv_data = $this->dbutil->csv_from_result($query, $delimiter, $newline);
+
+		// And download it to the user
+		force_download('exported_posts.csv', $result_csv_data);
+
+	}
+	
+	
 }
 /* End of file posts.php */
 /* Location: ./application/controllers/posts.php */

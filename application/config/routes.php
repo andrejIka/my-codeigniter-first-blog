@@ -2,6 +2,9 @@
 
 
 $route['posts/(:any)'] = 'posts/index/$1';
+$route['calendar/:num/:num'] = 'calendar/index/$1';
+$route['calendar/remove/:num/:num'] = 'calendar/remove/$1';
+$route['posts/export_posts'] = 'posts/export_posts/$1';
 $route['upload/delete_image/(:any)'] = 'upload/delete_image/$1';
 // $route['upload/(:any)'] = 'upload/index/$1';
 $route['upload'] = 'upload';

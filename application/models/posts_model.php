@@ -30,6 +30,11 @@ class Posts_model extends CI_Model {
     }
  
 
+    public function get_all_exported_posts(){ 
+        $query = $this->db->get('blog_posts');
+        return $query; 
+    }
+
 
     public function delete_post(){
 
@@ -69,6 +74,7 @@ class Posts_model extends CI_Model {
 
 /* End of file posts_model.php */
 /* Location: ./application/models/posts_model.php */
-
+/* End of file posts_model.php */
+/* Location: ./application/models/posts_model.php */
 /* End of file posts_model.php */
 /* Location: ./application/models/posts_model.php */

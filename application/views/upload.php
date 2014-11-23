@@ -6,6 +6,7 @@
           <ul class="nav nav-pills nav-justified">
             <li><a href='<?php echo site_url("/posts/"); ?>'   title="">Posts</a></li>
             <li  class="active"><a href='<?php echo site_url("/upload/"); ?>'  title="">Uploads</a></li>
+            <li><a href='<?php echo site_url("/calendar/"); ?>'  title="">Calendar</a></li> 
           </ul>
           <br />
           <?php  if(!empty($all_images)){  ?>
@@ -23,7 +24,12 @@
             <?php endforeach; ?>
           </div>
           <?php } ?>
-          <h1 class="clearfix">Add image to the gallery <a href="<?php echo site_url("/upload/export"); ?>" title="" class="btn btn-default pull-right"><span class="glyphicon glyphicon-download-alt"></span></a></h1>  
+          <h1 class="clearfix">Add image to the gallery
+            <div class="pull-right text-right">
+              <a href="<?php echo site_url("/upload/export_images"); ?>" class="btn btn-default">  Export images  ZIP  <span class="glyphicon glyphicon-download-alt"> </span></a>
+              <a href="<?php echo site_url("/upload/export_images_list"); ?>" class="btn btn-default">  Export  images list <span class="glyphicon glyphicon-list-alt"> </span></a> 
+            </div> 
+          </h1>  
           <div class="well "> 
             <?php echo form_open_multipart('/upload/'); ?> 
             <label for="">File upload</label>

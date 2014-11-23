@@ -20,6 +20,11 @@ class Images_model extends CI_Model {
         return $query->result(); 
     }
 
+    public function get_all_exported_images(){ 
+        $query = $this->db->get('gallery_images');
+        return $query; 
+    }
+
     public function get_current_image_info($image_id){ 
 
         $this->db->select('image_url , thumb_url');

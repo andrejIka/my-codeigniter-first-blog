@@ -1,0 +1,18 @@
+
+
+a.close-button{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+a.edit-button{
+	position: absolute;
+	top: 0;
+	right: 20px;
+}
+.alert{
+	position: relative;
+}
+td .alert{
+	padding: 15px 5px 5px 5px ;
+}
