@@ -22,6 +22,7 @@ In the next plans are:
 - adding jquery ajax to manage the calendar events info;
 - implement notify emails system with the html contents putted inside (a set of the letters);
 - play around with the cart class;
+- ajax save rating value;
 - build custom 404 pages for each part;
 - enable search of the content for the site;
 - enable complex search for the content;
