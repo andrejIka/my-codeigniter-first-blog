@@ -12,13 +12,22 @@ The next achievements after a week ago:
 -  purely editable, added and removable features;
 -  ~~export file feature~~;
 
-In the next plans are:
+TO-DO LIST:
 - to create strict structure of the application according best coding standarts;
 - implement sass/compass/haml and play around with in-build template landguage;
 - play around with the jquery ajax, ~~calendar~~, another classes;
 - enough well playing with the Active Record API, good knowledge to user;
 - enough knowledge of the api to build the app fast;
 - write the users registration for the ion component;
+- ajax post quick edit;
+- ajax post quick add;
+- experiment with modal popup ajax add info;
+- try ajax validations, complex ajax responses;
+- try wysiswyg rich text editor;
+- try smart ajax-based contact form, which checkes aloowed number of images;
+- try ajax register form with check user if exists or name allowed;
+- thnk about how to organize files because with ajax it's little complex to implement;
+- drag the calendar event to the table and on stop drag create the event;
 - adding jquery ajax to manage the calendar events info;
 - implement notify emails system with the html contents putted inside (a set of the letters);
 - play around with the cart class;
@@ -37,6 +46,8 @@ In the next plans are:
 - little acl playing around with the users roles;
 - try to test application a little - some simple kind of the tests;
 - more debug with the Chrome debugger. Looking for a best debugging way to manage all the request/files/cookie/server variables;
+- image instand delete post from database and removing files;
+- instand remove blog post with image;
 - enable return to the selected page feature when enabling the pagination. possibly saving in cookies?;
 - implement captcha in all the required forms;
 - playing around with sending emails from gmail/mailchimp or another different smtp clients;
