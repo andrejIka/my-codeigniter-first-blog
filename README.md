@@ -35,7 +35,9 @@ TO-DO LIST:
 - build custom 404 pages for each part;
 - enable search of the content for the site;
 - enable complex search for the content;
-- ajax-enable-disable event for the calendar at start (pressing by checkbox);
+- ~~ajax-enable-disable event for the calendar at start (pressing by checkbox)~~;
+- try to disable the event by ajax press some button with nice callback - change icon;
+- try to ajax remove event from the calendar;
 - drag events in the future by jquery ui with save results;
 - crud for the table with jquery ajax saving row;
 - delete row, edit row, add row and save it via ajax;
