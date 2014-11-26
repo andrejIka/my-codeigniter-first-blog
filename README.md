@@ -26,6 +26,7 @@ MORE SIMPLE:
 - custom zip of the application + saving db dump. export as a file and send it by email;
 
 MORE COMPLEX:
+- autocomplete bootstrap typehead from ajax;
 - to create strict structure of the application according best coding standarts;
 - playing around with sending emails from mailchimp or another different smtp clients;
 - play around with the ~~jquery ajax~~, ~~calendar~~, another classes;
