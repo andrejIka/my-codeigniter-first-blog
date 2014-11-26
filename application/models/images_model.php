@@ -38,8 +38,11 @@ class Images_model extends CI_Model {
         $query = $this->db->empty_table('gallery_images');  
     }
 
-    public function delete_current_image(){ 
-        $this->db->delete('gallery_images', array('id'=>$this->uri->segment(3))); 
+    public function delete_current_image($remove_id){  
+
+        $query = $this->db->delete('gallery_images', array('id'=>$remove_id)); 
+        return $query; 
+
     }
 
 

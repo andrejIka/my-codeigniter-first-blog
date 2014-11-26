@@ -13,27 +13,119 @@
             autoclose: true
         });
 
+        $(".well input[type='checkbox']").on('change', function(){
+            // this_value = $(this).val();
+            this_id = $(this).prop('id');
+            this_value = $(this).prop("checked");
+            if($(this).prop("checked")){
+              this_value = 1;
+            }
+            if(!$(this).prop("checked")){
+              this_value = 0; 
+            }
+            console.log(this_value+" : "+this_id); 
+
+            $.ajax({
+                 type: "POST",
+                 url: "<?php echo site_url('/ajax/'); ?>", 
+                 data: {id: this_id, value: this_value  },
+                 dataType: "json",
+                 error: 
+                  function(req, err){ 
+                    console.log(err); 
+                 },
+                 success: 
+                  function(data){
+                    console.info(data.id+" : "+data.value); 
+                    if(data){
+                      var target=$("#"+data.id);
+                      if(target.hasClass('done')){
+                        target.removeClass("done"); 
+                      }
+                      else if(!target.hasClass('done')){
+                        target.addClass("done"); 
+                      }  
+                    }
+                  }
+            });// you have missed this bracket
+            // return false;
+
+        });
+
+        $(".table a.close-button").on('click', function(){
+
+            this_date = $(this).attr("data-date");
+            this_event_wrapper = $(this).closest("p.alert");
+
+            $.ajax({
+                 type: "POST",
+                 url: "<?php echo site_url('calendar/remove/'); ?>",  
+                 // url: "/calendar/remove/", 
+                 data: {id: this_date  },
+                 dataType: "text",  
+                 cache:false,
+                 beforeSend : function (){
+                   this_event_wrapper.addClass('disabled').append('<span class="glyphicon glyphicon-asterisk"></span>');  
+                 },
+                 error: 
+                  function(req, err){ 
+                    console.log(err); 
+                  },
+                 success: 
+                  function(data){
+                    // alert(data);
+                    if(data=='true'){
+                        this_event_wrapper.fadeOut('fast', function(){
+                          $(this).remove();
+                        });
+                    } 
+                  }
+            });// you have missed this bracket
+            // // return false;
+            return false;
+        });
+        
+        $(".images-well a.remove-image-link").on('click', function(){
+            
+            // Make delete image 
+            this_event_wrapper = $(this).closest(".image-holder");
+            this_id = $(this).attr("data-id");
+            
+            // Make ajax request
+            $.ajax({
+                 type: "POST",
+                 url: "<?php echo site_url('upload/delete_image/'); ?>",  
+                 data: {id: this_id  },
+                 dataType: "text",  
+                 cache:false,
+                 beforeSend : function (){
+                   // this_event_wrapper.addClass('disabled').append('<span class="glyphicon glyphicon-asterisk"></span>');  
+                 },
+                 error: 
+                  function(req, err){ 
+                    console.log(err); 
+                  },
+                 success: 
+                  function(data){ 
+                    this_event_wrapper.fadeOut('fast', function(){
+                      $(this).remove();
+                    }); 
+                  }
+            });// you have missed this bracket
+            // // return false;
+            // return false;
+            return false;
+        });
+        
+        $('input.submit-on-change').change(function() { 
+          // select the form and submit 
+            $(this).closest('form').find('input[type="submit"]').click();
+        });         
+
+
         // $('form input:first').focus();  
-
-        // $('input[type=file]').focus();
-        // $('input[type=checkbox]').on('change',function(){
-        //   $('#submit').click(); 
-          
-        // });
-
-        // $('input[type=file]').change(function() { 
-        //   // select the form and submit
-        //   $('#submit').click(); 
-        //   // alert('this');
-        // });         
-
-        //         $('input[type=file]').change(function() { 
-        //   // select the form and submit
-        //   // alert('this');
-        //   $('form input').eq(2).focus(); 
-
-        // });         
-
+ 
+ 
 
         // window.setTimeout(function() { $(".alert-info, .alert-success").fadeOut('fast'); }, 3000);         
 

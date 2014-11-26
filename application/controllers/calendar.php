@@ -45,8 +45,8 @@
 				   {cal_row_start}<tr>{/cal_row_start}
 				   {cal_cell_start}<td>{/cal_cell_start}
 
-				   {cal_cell_content}{day}{content}  {/cal_cell_content}
-				   {cal_cell_content_today}<div class="highlight"><a href="{content}">{day}</a> </div>{/cal_cell_content_today}
+				   {cal_cell_content}{day}{content}{/cal_cell_content}
+				   {cal_cell_content_today}<b>{day}</b>{content}{/cal_cell_content_today}
 
 				   {cal_cell_no_content}{day}{/cal_cell_no_content}
 				   {cal_cell_no_content_today}<div class="highlight">{day}</div>{/cal_cell_no_content_today}
@@ -76,12 +76,19 @@
 
 			// print_r( $key->title );
 			$events_data = date_parse($key->due);
+			if($key->completed==1){
+				$event_state ='<span class="label label-success">Completed</span>'; 
+			}
+			else{
+				$event_state ='<span class="label label-default">Didn\'t done</span>';  
+			}
 
 
  			$day = $events_data['day'];
 			if($month_start==$events_data['month']){
 				$id_info = $events_data['year'].'-'.$events_data['month'].'-'.$events_data['day'];
-				$event[$day] = '<p class="alert alert-success"> <b> '.$key->title.' </b> <br> '.$key->body.' <a href="'.site_url("calendar/edit/".$id_info).'" class="edit-button"><span class="glyphicon glyphicon-edit"></span> </a><a href="'.site_url("calendar/remove/".$id_info).'" class="close-button"><span class="glyphicon glyphicon-remove"></span> </a> </p>'; 
+				$event[$day] = '<p class="alert alert-success"> <b> '.$key->title.' </b> <br> <em> '.$key->body.' </em> <a href="'.site_url("calendar/edit/".$id_info).'"  class="edit-button"><span class="glyphicon glyphicon-edit"></span> </a><a href="'.site_url("calendar/remove/".$id_info).'" data-date="'.$id_info.'"  class="close-button"><span class="glyphicon glyphicon-remove"></span> </a> <br> '.$event_state.' </p>'; 
+
 			}
 		}
 
@@ -114,10 +121,24 @@
  	}
 
  	public function remove(){
- 		$remove_id = $this->uri->segment(3);
- 		$this->tasks_model->remove_task_info($remove_id);
-		$this->session->set_flashdata('message', "<div class='alert alert-success'> Your event info has deleted with success!<button type='button' class='close' data-dismiss='alert'> <span aria-hidden='true'>&times;</span> </button></div>"); 
- 		redirect("calendar/");
+
+		if (!$this->input->is_ajax_request()) {
+	 	
+	 		$remove_id = $this->uri->segment(3);
+	 		$this->tasks_model->remove_task_info($remove_id);
+			$this->session->set_flashdata('message', "<div class='alert alert-success'> Your event info has deleted with success!<button type='button' class='close' data-dismiss='alert'> <span aria-hidden='true'>&times;</span> </button></div>"); 
+	 		redirect("calendar/");
+	
+		}
+		else if ($this->input->is_ajax_request()) {
+
+			$remove_id = $this->input->post('id');
+			if($this->tasks_model->remove_task_info($remove_id)){
+				echo "true";
+			}
+		
+		}
+
  	}
 
  	public function edit(){

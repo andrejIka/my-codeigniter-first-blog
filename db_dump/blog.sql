@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 23 2014 г., 22:05
+-- Время создания: Ноя 26 2014 г., 20:53
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.2.12
 
@@ -33,21 +33,7 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
   `author` text NOT NULL,
   `image_path` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
-
---
--- Дамп данных таблицы `blog_posts`
---
-
-INSERT INTO `blog_posts` (`id`, `title`, `content`, `author`, `image_path`) VALUES
-(4, 'khkjhk', 'hkjhkj', 'kjhkj', '846b77418a638936d7535fa56141201d.png'),
-(5, 'lkjlkjlk', 'lkjlkjl', 'lkjlkj', '9ffcff086250c131ddc4a81a38a23ecf.png'),
-(6, 'sdfsdfsd', 'dgfg', 'Sdf', '20f4f5e36f89911c0eca358eab61dd04.png'),
-(7, 'kjhkjh', 'kpokpo', 'pokpo', '3c49964a615883c047af1c6a6fefca60.png'),
-(8, 'asdlkjl', 'kjlkjl', 'lkjl', 'c968f99309b5f5c352bbe5964f1c824e.png'),
-(9, 'asdlkjl', 'kjlkjl', 'lkjl', 'e2f285e09caaed71bafb6f81bc06759d.png'),
-(10, 'asdlkjl', 'kjlkjl', 'lkjl', 'b23d1bf53439bd27aeaa6b06052eca88.png'),
-(11, 'asdlkjl', 'kjlkjl', 'lkjl', '26352e69c85e01463c1bd69f139ba8da.png');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 -- --------------------------------------------------------
 
@@ -60,22 +46,7 @@ CREATE TABLE IF NOT EXISTS `gallery_images` (
   `image_url` text NOT NULL,
   `thumb_url` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=133 ;
-
---
--- Дамп данных таблицы `gallery_images`
---
-
-INSERT INTO `gallery_images` (`id`, `image_url`, `thumb_url`) VALUES
-(124, '4d70cbb5ad23b560a66284952ca0466e.jpg', '4d70cbb5ad23b560a66284952ca0466e_thumb.jpg'),
-(125, '08e892ee0a937425ea2bc7fb753d6c5a.jpg', '08e892ee0a937425ea2bc7fb753d6c5a_thumb.jpg'),
-(126, '37d230842b06e097afe48f226cde9527.png', '37d230842b06e097afe48f226cde9527_thumb.png'),
-(127, '715ac6be0da49cd4964b0f206da0d6f3.png', '715ac6be0da49cd4964b0f206da0d6f3_thumb.png'),
-(128, '0b76097e8ef08fcbdc6f412a773e402d.png', '0b76097e8ef08fcbdc6f412a773e402d_thumb.png'),
-(129, 'ff3e300532cfa4d921844d0d7a4b404e.png', 'ff3e300532cfa4d921844d0d7a4b404e_thumb.png'),
-(130, 'c581b22c2272444176eb96060623f4a2.jpg', 'c581b22c2272444176eb96060623f4a2_thumb.jpg'),
-(131, 'd632f36b2fd82fcf7fd77efa7ea43af3.png', 'd632f36b2fd82fcf7fd77efa7ea43af3_thumb.png'),
-(132, '3c2f25afa611d5798120220269e5d7fd.gif', '3c2f25afa611d5798120220269e5d7fd_thumb.gif');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=143 ;
 
 -- --------------------------------------------------------
 
@@ -149,16 +120,14 @@ CREATE TABLE IF NOT EXISTS `tasks_list` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `completed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- Дамп данных таблицы `tasks_list`
 --
 
 INSERT INTO `tasks_list` (`id`, `title`, `body`, `due`, `created_at`, `completed`) VALUES
-(1, 'dfgdfgdf', '1111111111', '2014-10-26', '2014-11-23 11:54:37', 127),
-(8, 'Test', 'test', '2014-11-10', '2014-11-23 20:03:20', 0),
-(9, 'Running', 'I need to run a little', '2014-11-25', '2014-11-23 20:04:15', 0);
+(21, 'орро', 'лорлорло', '2014-11-14', '2014-11-26 18:31:24', 1);
 
 -- --------------------------------------------------------
 
@@ -185,14 +154,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `company` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', 'UGZp0rTVfxTJU5flxygRLe11e1bc04596b88fe81', '', 'admin@admin.com', '', 'BlFeNEBmdSLOHe-KOaCIX.a954414bc3fc0cc0a3', 1416666812, NULL, 1268889823, 1416773041, 1, 'Admin', 'istrator', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', 'UGZp0rTVfxTJU5flxygRLe11e1bc04596b88fe81', '', 'admin@admin.com', '', 'BlFeNEBmdSLOHe-KOaCIX.a954414bc3fc0cc0a3', 1416666812, '6Z6aGwt0QHHuaB/GNTcNB.', 1268889823, 1417026660, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(2, '127.0.0.1', 'dronni3de dronni3de', 'l6ZfMI0cxiV3ZlQduWr.2ud5593291598f24f1b6', NULL, 'dronni3de@gmail.com', NULL, 'puAS1k8WsBry2Tf10pPzH.db1ac0a3d03c596954', 1416943534, NULL, 1416943455, NULL, 1, 'dronni3de', 'dronni3de', 'dronni3de', '123456789');
 
 -- --------------------------------------------------------
 
@@ -208,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
   UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
   KEY `fk_users_groups_users1_idx` (`user_id`),
   KEY `fk_users_groups_groups1_idx` (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `users_groups`
@@ -216,7 +186,8 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (5, 1, 1),
-(6, 1, 2);
+(6, 1, 2),
+(7, 2, 2);
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

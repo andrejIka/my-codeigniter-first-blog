@@ -27,9 +27,12 @@
 
      }
  
-     public function remove_task_info($remove_id){
+    public function remove_task_info($remove_id){
+
         $query = $this->db->delete('tasks_list', array('due'=>$remove_id)); 
-     }
+        return $query;
+        
+    }
 
 
 
@@ -42,6 +45,19 @@
             );
         $this->db->where('id',$this->input->post('id'));
         $this->db->update('tasks_list',$data);  
+    } 
+
+    public function update_current_event_state($id, $value){
+        // $data = array(
+        //       'completed'=>$value
+        //     );
+        // $this->db->where('id',$id);
+        // $this->db->update('tasks_list',$data);  
+
+        return $this->db
+               ->where('id', $id)
+               ->update("tasks_list", array('completed' => $value));
+
     } 
 
 

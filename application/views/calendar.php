@@ -5,6 +5,7 @@
     <li><a href='<?php echo site_url("/posts/"); ?>'   title="">Posts</a></li>
     <li><a href='<?php echo site_url("/upload/"); ?>'  title="">Uploads</a></li>
     <li   class="active"><a href='<?php echo site_url("/calendar/"); ?>'  title="">Calendar</a></li> 
+    <li><a href='<?php echo site_url("/ajax/"); ?>'  title="">Ajax</a></li>  
   </ul>
   <br />
 

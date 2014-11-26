@@ -6,13 +6,16 @@
         <li class="active"><a href='<?php echo site_url("/posts/"); ?>'   title="">Posts</a></li>
         <li><a href='<?php echo site_url("/upload/"); ?>'  title="">Uploads</a></li>
         <li><a href='<?php echo site_url("/calendar/"); ?>'  title="">Calendar</a></li>
+        <li><a href='<?php echo site_url("/ajax/"); ?>'  title="">Ajax</a></li>  
       </ul>
       <br />
       <h2 class="clearfix">
         Blog posts <a href="<?php echo site_url("/add_post/"); ?>" title="" class="btn btn-default">Add post</a>
-        <span class="pull-right">
-          <a href="<?php echo site_url("/posts/export_posts"); ?>" class="btn btn-default">  Export posts <span class="glyphicon glyphicon-download-alt"> </span></a> 
-        </span>
+        <?php  if(!empty($posts)){  ?>
+          <span class="pull-right">
+            <a href="<?php echo site_url("/posts/export_posts"); ?>" class="btn btn-default">  Export posts <span class="glyphicon glyphicon-download-alt"> </span></a> 
+          </span>
+        <?php } ?>
       </h2>  
       <?php echo $this->session->flashdata('message');  ?>
       <?php foreach ($posts as $post): ?>

@@ -1,3 +1,25 @@
+.well.done, .well.done *{
+	text-decoration: line-through;
+}
+
+.outlined, .outlined div{
+	outline: 1px solid red;
+}
+
+/* Upload */
+.remove-image-link{
+	position: absolute; 
+	top:0; 
+	right: 0;
+}
+.image-holder{
+	display: inline-block; 
+	position: relative; 
+	margin-bottom: 20px; 
+	border: 2px solid #ccc; 
+	border-radius: 6px; 
+	margin-right: 10px;
+}
 
 
 a.close-button{
@@ -12,6 +34,27 @@ a.edit-button{
 }
 .alert{
 	position: relative;
+}
+.alert.disabled{
+	min-height: 40px;
+}
+.alert.disabled a,
+.alert.disabled b,
+.alert.disabled br,
+.alert.disabled em 
+{
+	display: none;
+}
+.alert.disabled .glyphicon-asterisk{
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	font-size: 2em;
+	color: green;
+	text-align: center;
 }
 td .alert{
 	padding: 15px 5px 5px 5px ;

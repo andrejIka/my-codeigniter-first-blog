@@ -12,6 +12,7 @@ $route['news'] = 'news';
 $route['edit_post/(:any)'] = 'posts/edit_post/$1';
 $route['delete_post/(:any)'] = 'posts/delete_post/$1';
 $route['add_post'] = 'posts/add_post';
+// $route['add_post.php'] = 'posts/add_post';
 // $route['(:any)'] = 'pages/view/$1';
 // $route['default_controller'] = 'pages/view';
 

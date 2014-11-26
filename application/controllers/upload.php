@@ -23,6 +23,7 @@ class Upload extends CI_Controller {
 	{
 
 		$data['all_images'] = $this->images_model->get_all_images( );
+		// if($data['all_images']) echo "111";
 
 		if( $this->input->post('submit') ){
 
@@ -151,22 +152,51 @@ class Upload extends CI_Controller {
 
 
 	 public function delete_image(){
+
+		if (!$this->input->is_ajax_request()) {
 	 	
-		$image_info_result = $this->images_model->get_current_image_info($this->uri->segment(3)) ; 
-		$path =  $_SERVER['DOCUMENT_ROOT']."/ci/assets/uploads/";
-		$file1 = $path.$image_info_result[0]->image_url;
-		$file2 = $path.$image_info_result[0]->thumb_url;
+			$image_info_result = $this->images_model->get_current_image_info($this->uri->segment(3)) ; 
+			$path =  $_SERVER['DOCUMENT_ROOT']."/ci/assets/uploads/";
+			$file1 = $path.$image_info_result[0]->image_url;
+			$file2 = $path.$image_info_result[0]->thumb_url;
 
-		if (file_exists($file1)) {
-			unlink($path.$image_info_result[0]->image_url); 
-		}
-		if (file_exists($file2)) {  
-			unlink($path.$image_info_result[0]->thumb_url);
-		}
-		$this->images_model->delete_current_image();
+			if (file_exists($file1)) {
+				unlink($path.$image_info_result[0]->image_url); 
+			}
+			if (file_exists($file2)) {  
+				unlink($path.$image_info_result[0]->thumb_url);
+			}
+			$this->images_model->delete_current_image($this->uri->segment(3));
 
-		$this->session->set_flashdata('message', "<div class='alert alert-info'> Your file has been removed with success!</div>");
-		redirect('/upload/');
+			$this->session->set_flashdata('message', "<div class='alert alert-info'> Your file has been removed with success!</div>");
+			redirect('/upload/');
+	
+		}
+		else if ($this->input->is_ajax_request()) {
+
+			$image_id = $this->input->post('id'); 
+  
+			if($this->images_model->delete_current_image($image_id)){
+				
+				$path =  $_SERVER['DOCUMENT_ROOT']."/ci/assets/uploads/";
+				$image_info_result = $this->images_model->get_current_image_info($image_id) ; 
+				$file1 = $path.$image_info_result[0]->image_url;
+				$file2 = $path.$image_info_result[0]->thumb_url;
+
+				if (file_exists($file1)) {
+					unlink($path.$image_info_result[0]->image_url); 
+				}
+				if (file_exists($file2)) {  
+					unlink($path.$image_info_result[0]->thumb_url);
+				}
+				// echo "success";
+				// echo "true"; 
+
+			} 
+		
+		}
+
+	 	
 		
 	 }
 	 
