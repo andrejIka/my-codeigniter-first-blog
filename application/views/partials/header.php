@@ -10,6 +10,7 @@
     <!-- Bootstrap core CSS -->
     <link href="<?php echo site_url('/'); ?>assets/css/bootstrap.css" rel="stylesheet"> 
     <link href="<?php echo site_url('/'); ?>assets/css/datepicker3.css" rel="stylesheet"> 
+    <link href="<?php echo site_url('/'); ?>assets/css/toastr.min.css" rel="stylesheet"> 
     <link href="<?php echo site_url('/'); ?>assets/css/custom.css" rel="stylesheet"> 
   </head>
 

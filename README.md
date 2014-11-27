@@ -18,8 +18,8 @@ MORE SIMPLE:
 - implement sass/compass/haml and play around with in-build template landguage;
 - experiment with modal popup ajax add info;
 - try wysiswyg rich text editor save different kind of data;
-- try ajax check post add - check  if exists already this kind of the name allowed;
-- enable search of the content for the site;
+- try ajax check post add - check  if post name is  already exists and  kind of the name allowed;
+- ~~enable search of the content for the site~~;
 - enable return to the selected page feature when enabling the pagination. possibly saving in cookies?;
 - playing around with sending emails from gmail;
 - try ajax validations which returns the result;

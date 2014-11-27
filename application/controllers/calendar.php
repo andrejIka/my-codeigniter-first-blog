@@ -11,6 +11,7 @@
 		$this->load->library(array('form_validation','pagination','session', 'image_lib', 'ion_auth')); 
 		$this->load->model('tasks_model');
 		//Load Dependencies
+		$this->load->helper('dbug');
 
 		if ( !$this->ion_auth->logged_in() ) 
 		{ 
@@ -92,6 +93,8 @@
 			}
 		}
 
+
+
  		$data['calendar'] = $this->calendar->generate($year_start, $month_start, $event);
 
 
@@ -109,14 +112,15 @@
 			} 
 			else{   
 				$this->tasks_model->add_event();
-				$this->session->set_flashdata('message', "<div class='alert alert-info'> Your event info has been added with success!<button type='button' class='close' data-dismiss='alert'> <span aria-hidden='true'>&times;</span> </button></div>"); 
-				redirect('calendar/');
+				// $this->session->set_flashdata('message', "<div class='alert alert-info'> Your event info has been added with success!<button type='button' class='close' data-dismiss='alert'> <span aria-hidden='true'>&times;</span> </button></div>"); 
+				// redirect('calendar/');
 			}
 
 		}
 		else{
 	 		$this->load->view('calendar', $data, FALSE); 
 		}				 
+
 
  	}
 
@@ -186,7 +190,7 @@
 		}				 
 	 		// $this->load->view('calendar', $data, FALSE); 
 
-
+		// dbug($_REQUEST); 
 
 
  	}

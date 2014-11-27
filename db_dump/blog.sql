@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 26 2014 г., 20:53
+-- Время создания: Ноя 28 2014 г., 00:10
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.2.12
 
@@ -33,7 +33,14 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
   `author` text NOT NULL,
   `image_path` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+
+--
+-- Дамп данных таблицы `blog_posts`
+--
+
+INSERT INTO `blog_posts` (`id`, `title`, `content`, `author`, `image_path`) VALUES
+(13, 'test', 'text and', ';lk;', '0c16e7c03f2776bc3143dc4b3f90103f.jpg');
 
 -- --------------------------------------------------------
 
@@ -46,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `gallery_images` (
   `image_url` text NOT NULL,
   `thumb_url` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=143 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -120,14 +127,15 @@ CREATE TABLE IF NOT EXISTS `tasks_list` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `completed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Дамп данных таблицы `tasks_list`
 --
 
 INSERT INTO `tasks_list` (`id`, `title`, `body`, `due`, `created_at`, `completed`) VALUES
-(21, 'орро', 'лорлорло', '2014-11-14', '2014-11-26 18:31:24', 1);
+(22, 'oioij', 'oijoij', '2014-11-26', '2014-11-26 20:55:05', 1),
+(23, 'oioij', 'oijoij', '2014-11-26', '2014-11-26 20:55:19', 1);
 
 -- --------------------------------------------------------
 
@@ -161,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', 'UGZp0rTVfxTJU5flxygRLe11e1bc04596b88fe81', '', 'admin@admin.com', '', 'BlFeNEBmdSLOHe-KOaCIX.a954414bc3fc0cc0a3', 1416666812, '6Z6aGwt0QHHuaB/GNTcNB.', 1268889823, 1417026660, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', 'UGZp0rTVfxTJU5flxygRLe11e1bc04596b88fe81', '', 'admin@admin.com', '', 'BlFeNEBmdSLOHe-KOaCIX.a954414bc3fc0cc0a3', 1416666812, '6Z6aGwt0QHHuaB/GNTcNB.', 1268889823, 1417122911, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '127.0.0.1', 'dronni3de dronni3de', 'l6ZfMI0cxiV3ZlQduWr.2ud5593291598f24f1b6', NULL, 'dronni3de@gmail.com', NULL, 'puAS1k8WsBry2Tf10pPzH.db1ac0a3d03c596954', 1416943534, NULL, 1416943455, NULL, 1, 'dronni3de', 'dronni3de', 'dronni3de', '123456789');
 
 -- --------------------------------------------------------

@@ -10,6 +10,7 @@ class Posts extends CI_Controller {
 		$this->load->library(array('form_validation','pagination','session', 'image_lib', 'ion_auth')); 
 		$this->load->model('posts_model');
 		//Load Dependencies
+		$this->load->helper('dbug');
 
 		if ( !$this->ion_auth->logged_in() ) 
 		{ 
@@ -60,13 +61,13 @@ class Posts extends CI_Controller {
 		
 
 		$data['posts'] = $this->posts_model->get_posts($config["per_page"], $page);
-		
 
 		$data["links"] = $this->pagination->create_links();
 
 
-		ChromePhp::table($data);
+		// ChromePhp::table($data);
 		$this->load->view('posts', $data);
+		
 	} 
 
 	public function delete_post(){

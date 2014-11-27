@@ -20,6 +20,20 @@ class Posts_model extends CI_Model {
         return $query->result(); 
     }
 
+    public function get_searched_posts($search_criteria){
+        
+        $this->db->select('*');
+        $this->db->from('blog_posts');
+        $this->db->like('title', $search_criteria);
+        $this->db->or_like('content', $search_criteria);
+        // $this->db->like('author', $search_criteria);
+        $query = $this->db->get();
+        return $query->result();
+  
+        // $query = $this->db->get('blog_posts');
+        // return $search_criteria; 
+    }
+
     public function get_current_image_info($image_id){ 
 
         $this->db->select('image_path');

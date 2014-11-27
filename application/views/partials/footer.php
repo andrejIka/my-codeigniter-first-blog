@@ -3,8 +3,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="<?php echo site_url("/"); ?>assets/js/jquery.min.js"></script>
-    <script src="<?php echo site_url("/"); ?>assets/js/jquery.min.js"></script>
+    <script src="<?php echo site_url("/"); ?>assets/js/bootstrap.js"></script>
     <script src="<?php echo site_url("/"); ?>assets/js/bootstrap-datepicker.js"></script>  
+    <script src="<?php echo site_url("/"); ?>assets/js/toastr.js"></script>  
     <script> 
       $(document).ready(function(){  
 
@@ -16,7 +17,9 @@
         $(".well input[type='checkbox']").on('change', function(){
             // this_value = $(this).val();
             this_id = $(this).prop('id');
+            toastr.info( "Checked with ID: "+this_id );
             this_value = $(this).prop("checked");
+            toastr.info( "Is Checked: "+this_value );
             if($(this).prop("checked")){
               this_value = 1;
             }
@@ -38,6 +41,7 @@
                   function(data){
                     console.info(data.id+" : "+data.value); 
                     if(data){
+                      toastr.info( "AJAX request returned this data: "+JSON.stringify(data) );
                       var target=$("#"+data.id);
                       if(target.hasClass('done')){
                         target.removeClass("done"); 
