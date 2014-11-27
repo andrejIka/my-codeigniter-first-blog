@@ -12,7 +12,6 @@ The next achievements after a week ago:
 -  purely editable, added and removable features;
 -  ~~export file feature~~;
 
-
 TO-DO LIST:
 
 MORE SIMPLE:
