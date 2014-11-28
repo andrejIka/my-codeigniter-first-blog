@@ -12,6 +12,7 @@ class Search extends CI_Controller {
 		$this->load->model('posts_model');
 		//Load Dependencies
 		$this->load->helper('dbug');
+		$this->load->helper('view'); 
 
 		if ( !$this->ion_auth->logged_in() ) 
 		{ 

@@ -16,6 +16,7 @@ class Posts_model extends CI_Model {
 
     public function get_posts($limit, $start){
         $this->db->limit($limit, $start);
+        $this->db->order_by('id', 'DESC');
         $query = $this->db->get('blog_posts');
         return $query->result(); 
     }

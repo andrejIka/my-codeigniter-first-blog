@@ -27,7 +27,8 @@
   <div class="form-group">
     <?php echo lang('login_identity_label', 'identity');?>
     <?php 
-      $identity['class']="form-control";
+      $identity['class']="form-control focused";
+      $identity['value']="admin@admin.com";
       echo form_input($identity);
     ?>
   </div><!-- /.form-group -->  
@@ -36,6 +37,7 @@
     <?php echo lang('login_password_label', 'password');?>
     <?php 
       $password['class']="form-control";
+      $password['value']="123456789";
       echo form_input($password);?> 
   </div><!-- /.form-group -->  
 

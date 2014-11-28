@@ -8,6 +8,7 @@ class Upload extends CI_Controller {
 		//Do your magic here
 		$this->load->helper(array('url','form', 'file')); 
 		$this->load->library(array('form_validation','pagination','session', 'image_lib', 'ion_auth')); 
+		$this->load->helper('view'); 
 		$this->load->helper('dbug');
 
 		if ( !$this->ion_auth->logged_in() ) 

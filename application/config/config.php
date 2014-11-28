@@ -15,7 +15,9 @@
 |
 */
 $config['base_url']	= '';
-
+$config['modules_locations'] = array(
+    APPPATH.'modules/' => '../modules/',
+);
 /*
 |--------------------------------------------------------------------------
 | Index File

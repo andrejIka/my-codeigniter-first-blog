@@ -10,6 +10,7 @@ class Ajax extends CI_Controller {
 		$this->load->helper(array('url','form', 'file')); 
 		$this->load->library(array('form_validation','pagination','session', 'image_lib', 'ion_auth')); 
 		$this->load->model('tasks_model');
+		$this->load->helper('view'); 
 
 	}
 

@@ -1,14 +1,6 @@
 <?php $this->load->view('partials/header'); ?>
   
-  <br />
-  <ul class="nav nav-pills nav-justified">
-    <li class="active"><a href='<?php echo site_url("/posts/"); ?>'   title="">Posts</a></li>
-    <li><a href='<?php echo site_url("/upload/"); ?>'  title="">Uploads</a></li>
-    <li><a href='<?php echo site_url("/search/"); ?>'  title="">Search posts</a></li>
-    <li><a href='<?php echo site_url("/calendar/"); ?>'  title="">Calendar</a></li>
-    <li><a href='<?php echo site_url("/ajax/"); ?>'  title="">Ajax</a></li>  
-  </ul>
-  <br />
+  <?php echo partial('partials/menu', array('active' => 5)); ?> 
 
   <h1>Here's the Ajax   </h1>
   

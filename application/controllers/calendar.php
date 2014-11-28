@@ -12,6 +12,7 @@
 		$this->load->model('tasks_model');
 		//Load Dependencies
 		$this->load->helper('dbug');
+		$this->load->helper('view'); 
 
 		if ( !$this->ion_auth->logged_in() ) 
 		{ 

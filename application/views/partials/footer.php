@@ -9,6 +9,7 @@
     <script> 
       $(document).ready(function(){  
 
+
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd',
             autoclose: true
@@ -127,7 +128,7 @@
         });         
 
 
-        // $('form input:first').focus();  
+        $('form input.focused').focus();  
  
  
 
@@ -138,4 +139,3 @@
     </script> 
   </body>
 </html>
-

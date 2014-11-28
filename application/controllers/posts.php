@@ -12,6 +12,9 @@ class Posts extends CI_Controller {
 		//Load Dependencies
 		$this->load->helper('dbug');
 
+		$this->load->helper('view'); 
+
+ 
 		if ( !$this->ion_auth->logged_in() ) 
 		{ 
 			redirect('auth', 'refresh');
@@ -32,15 +35,15 @@ class Posts extends CI_Controller {
 		$config = array();
 		$config["base_url"] = base_url() . "posts/";
 		$config["total_rows"] = $this->posts_model->record_count();
-		$config["per_page"] = 2;
+		$config["per_page"] = 3;
 		$config["uri_segment"] = 2;
 		/* This Application Must Be Used With BootStrap 3 *  */
 		$config['full_tag_open'] = "<ul class='pagination'>";
 		$config['full_tag_close'] ="</ul>";
 		$config['num_tag_open'] = '<li>';
 		$config['num_tag_close'] = '</li>';
-		$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
-		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+		$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a>";
+		$config['cur_tag_close'] = "</a></li>";
 		$config['next_tag_open'] = "<li>";
 		$config['next_tagl_close'] = "</li>";
 		$config['prev_tag_open'] = "<li>";
@@ -49,21 +52,23 @@ class Posts extends CI_Controller {
 		$config['first_tagl_close'] = "</li>";
 		$config['last_tag_open'] = "<li>";
 		$config['last_tagl_close'] = "</li>";
+		$config['use_page_numbers'] = TRUE;
+		$config['num_links'] = 1;
 		$this->pagination->initialize($config);
 
+		// $offset = ($this->uri->segment(2) == 1) ? 0 : ($this->uri->segment(2) * $config['per_page']) - $config['per_page'];
 
-		$page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
-		
-
+		$offset = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+// ($this->uri->segment(4,1)-1)*$config['per_page']) 
 		// $this->session->set_userdata('current_page', $page);
 		// $this->session->set_userdata('max_pages', $config["total_rows"]/$config["per_page"]);
 		// echo "max pages:".$this->session->userdata('max_pages');
 		
 
-		$data['posts'] = $this->posts_model->get_posts($config["per_page"], $page);
+		$data['posts'] = $this->posts_model->get_posts($config["per_page"], $offset);
+		// dbug($config["per_page"]." : page: ".$page);
 
 		$data["links"] = $this->pagination->create_links();
-
 
 		// ChromePhp::table($data);
 		$this->load->view('posts', $data);
@@ -89,6 +94,10 @@ class Posts extends CI_Controller {
 		$data['file_errors'] = '';
 		// $last_page = $this->session->userdata('max_pages');
 		// print_r($_FILES);  
+		
+		$return_page = ceil($this->posts_model->record_count()/2);
+		// dbug($return_page);
+ 
 
 		if( $this->input->post('submit') )
         {
@@ -140,7 +149,10 @@ class Posts extends CI_Controller {
 					$this->session->set_flashdata('message', "<div class='alert alert-info'> Your post has been added with success!<button type='button' class='close' data-dismiss='alert'> <span aria-hidden='true'>&times;</span> </button></div>");
 					// $this->load->view('add_post', $data);   
 					// ChromePhp::table($data['post']);
-					redirect('posts/');    
+					if($return_page>1)
+						redirect('posts/'.$return_page);
+					else    
+						redirect('posts/');
 				}
 			} 
         }
