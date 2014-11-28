@@ -12,6 +12,15 @@ The next achievements after a week ago:
 -  purely editable, added and removable features;
 -  ~~export file feature~~;
 
+
+CURRENTLY:
+- i had applied the HMVC!!! YAY!
+- i had applied the calling one view on another view from Sam Dark.
+- It was done on 28-11-2014.
+- Great stuff! This installation collect the best Codeigniter practices.
+- Have to learn the template engine, the correct config init arrays, correct autoload modules, better learn the debug, experiment with it.
+
+
 TO-DO LIST:
 
 MORE SIMPLE:
