@@ -1,17 +1,26 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
-$route['posts/(:any)'] = 'posts/index/$1';
-$route['calendar/:num/:num'] = 'calendar/index/$1';
-$route['calendar/remove/:num/:num'] = 'calendar/remove/$1';
+// Here's the posts routes
+$route['posts/(:num)'] = 'posts/index/$1';
+$route['posts/add_post'] = 'posts/add_post';
+$route['posts/edit_post/(:num)'] = 'posts/edit_post/$1';
+$route['posts/delete_post/(:num)'] = 'posts/delete_post/$1';
 $route['posts/export_posts'] = 'posts/export_posts/$1';
-$route['upload/delete_image/(:any)'] = 'upload/delete_image/$1';
-// $route['upload/(:any)'] = 'upload/index/$1';
+$route['posts/search'] = 'posts/search';
+
+// Calendar routes
+$route['calendar/(:num)/(:num)'] = 'calendar/index/$1';
+$route['calendar/remove/(:num)/(:num)'] = 'calendar/remove/$1';
+$route['calendar/calendar_tasks/'] = 'calendar/calendar_tasks/$1';
+
+// Upload images routes
 $route['upload'] = 'upload';
-$route['news'] = 'news';
-$route['edit_post/(:any)'] = 'posts/edit_post/$1';
-$route['delete_post/(:any)'] = 'posts/delete_post/$1';
-$route['add_post'] = 'posts/add_post';
+$route['upload/delete_image/(:any)'] = 'upload/delete_image/$1';
+
+// Authentification
+$route['auth'] = 'auth/index/$1';
+
+// $route['upload/(:any)'] = 'upload/index/$1';
 // $route['add_post.php'] = 'posts/add_post';
 // $route['(:any)'] = 'pages/view/$1';
 // $route['default_controller'] = 'pages/view';
@@ -48,7 +57,6 @@ $route['add_post'] = 'posts/add_post';
 | URI contains no data. In the above example, the "welcome" class
 | would be loaded.
 |
-|	$route['404_override'] = 'errors/page_missing';
 |
 | This route will tell the Router what URI segments to use if those provided
 | in the URL cannot be matched to a valid route.
@@ -57,6 +65,7 @@ $route['add_post'] = 'posts/add_post';
 
 $route['default_controller'] = "posts";
 $route['404_override'] = '';
+// $route['404_override'] = 'welcome';
 
 
 /* End of file routes.php */

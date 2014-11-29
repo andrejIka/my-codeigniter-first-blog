@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 28 2014 г., 00:10
+-- Время создания: Ноя 29 2014 г., 21:14
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.2.12
 
@@ -33,14 +33,22 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
   `author` text NOT NULL,
   `image_path` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=76 ;
 
 --
 -- Дамп данных таблицы `blog_posts`
 --
 
 INSERT INTO `blog_posts` (`id`, `title`, `content`, `author`, `image_path`) VALUES
-(13, 'test', 'text and', ';lk;', '0c16e7c03f2776bc3143dc4b3f90103f.jpg');
+(45, '1', '1', '1', '287c5085985d79149f259fa240fc9f4b.png'),
+(66, '2', '2', '2', 'ca22a9e58ce1bf4dfa8f7ff0a3010173.png'),
+(67, '3', '3', '3', '710ad2b32541f7b0affcbf4f2c0687fc.png'),
+(68, '4', '4', '4', 'e1da262764a8a2fabfa9b8678b9bb864.png'),
+(69, '5', '5', '55', 'b3ab1e230e674429d547fbcf4b81a82b.png'),
+(70, '6', '6', '6', 'dd5f4d41ec4017aa0d23bb0d6478a755.jpg'),
+(71, '7', '7', '7', 'bd4a2898208cdc28227cbbb07e3ca0e2.png'),
+(74, '8', '8', '8', 'ac32de5dc104b63994c029ba7dbaf862.png'),
+(75, '9', '9', '9', '528503b8306d49218da4cff75525a0f5.png');
 
 -- --------------------------------------------------------
 
@@ -53,7 +61,14 @@ CREATE TABLE IF NOT EXISTS `gallery_images` (
   `image_url` text NOT NULL,
   `thumb_url` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+--
+-- Дамп данных таблицы `gallery_images`
+--
+
+INSERT INTO `gallery_images` (`id`, `image_url`, `thumb_url`) VALUES
+(10, '26e026b5f3bd85cbebead5542dd88131.png', '26e026b5f3bd85cbebead5542dd88131_thumb.png');
 
 -- --------------------------------------------------------
 
@@ -127,15 +142,16 @@ CREATE TABLE IF NOT EXISTS `tasks_list` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `completed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
 
 --
 -- Дамп данных таблицы `tasks_list`
 --
 
 INSERT INTO `tasks_list` (`id`, `title`, `body`, `due`, `created_at`, `completed`) VALUES
-(22, 'oioij', 'oijoij', '2014-11-26', '2014-11-26 20:55:05', 1),
-(23, 'oioij', 'oijoij', '2014-11-26', '2014-11-26 20:55:19', 1);
+(34, 'kjkj', 'hkjhkj', '2014-11-18', '2014-11-29 12:30:44', 1),
+(36, 'kjhk', 'jhkjhk', '2014-11-14', '2014-11-29 12:31:09', 1),
+(37, 'asd', 'jhjj', '2014-11-25', '2014-11-29 12:31:21', 1);
 
 -- --------------------------------------------------------
 
@@ -169,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', 'UGZp0rTVfxTJU5flxygRLe11e1bc04596b88fe81', '', 'admin@admin.com', '', 'BlFeNEBmdSLOHe-KOaCIX.a954414bc3fc0cc0a3', 1416666812, '6Z6aGwt0QHHuaB/GNTcNB.', 1268889823, 1417122911, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', 'UGZp0rTVfxTJU5flxygRLe11e1bc04596b88fe81', '', 'admin@admin.com', '', 'BlFeNEBmdSLOHe-KOaCIX.a954414bc3fc0cc0a3', 1416666812, '6Z6aGwt0QHHuaB/GNTcNB.', 1268889823, 1417258036, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '127.0.0.1', 'dronni3de dronni3de', 'l6ZfMI0cxiV3ZlQduWr.2ud5593291598f24f1b6', NULL, 'dronni3de@gmail.com', NULL, 'puAS1k8WsBry2Tf10pPzH.db1ac0a3d03c596954', 1416943534, NULL, 1416943455, NULL, 1, 'dronni3de', 'dronni3de', 'dronni3de', '123456789');
 
 -- --------------------------------------------------------

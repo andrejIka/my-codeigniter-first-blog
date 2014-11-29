@@ -14,7 +14,11 @@
 | path to your installation.
 |
 */
+
+$config['upload_images_path']	= $_SERVER['DOCUMENT_ROOT']."/ci/assets/uploads/";
+
 $config['base_url']	= '';
+
 $config['modules_locations'] = array(
     APPPATH.'modules/' => '../modules/',
 );
