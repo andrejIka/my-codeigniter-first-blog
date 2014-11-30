@@ -29,7 +29,6 @@ MORE SIMPLE:
 
 MORE COMPLEX:
 
-
 - ~~i had applied the smarty template engine!!! ! Having experience with the Smarty tags and conditions.  ~~
 - ~~i had applied the HMVC!!! YAY!~~
 - ~~i had applied the calling one view on another view from Sam Dark.~~
