@@ -18,8 +18,8 @@ $route['upload'] = 'upload';
 $route['upload/delete_image/(:any)'] = 'upload/delete_image/$1';
 
 // Authentification
-$route['auth'] = 'auth/index/$1';
-
+// $route['auth'] = 'auth/index/$1';
+$route['auth/(.*)'] = 'users/auth/$1';
 // $route['upload/(:any)'] = 'upload/index/$1';
 // $route['add_post.php'] = 'posts/add_post';
 // $route['(:any)'] = 'pages/view/$1';

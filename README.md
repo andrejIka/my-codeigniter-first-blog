@@ -82,7 +82,7 @@ MORE COMPLEX:
 - custom zip of the application + saving db dump. export as a file and send it by email but delete saved dump via email;
 - manage the site via http requests;
 - attach third-party classes to the codeigniter;
-- manage the site via email messages.
+- manage the site via email messages.-
 
 Hopefully will do in a ~~week~~ month of learning. Good luck for me and have a nice day everyone!
 
@@ -90,3 +90,4 @@ Cheers.
 
   
     
+-+

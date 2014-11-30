@@ -190,8 +190,15 @@
 	{
 
 		if (!$this->input->is_ajax_request()) {
+
 			$events_data['data'] = $this->tasks_model->get_tasks_for_month();  
-			$this->load->view('calendar_tasks', $events_data, FALSE);
+			
+			$events_data['baseurl'] = base_url();   
+			
+			// $this->load->view('calendar_tasks', $events_data, FALSE);
+			       
+	        $this->parser->parse("calendar_tasks.tpl", $events_data);
+
 		}
 		else if ($this->input->is_ajax_request()) {
 
