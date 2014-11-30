@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 29 2014 г., 21:14
+-- Время создания: Ноя 30 2014 г., 23:18
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.2.12
 
@@ -33,14 +33,13 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
   `author` text NOT NULL,
   `image_path` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=76 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=77 ;
 
 --
 -- Дамп данных таблицы `blog_posts`
 --
 
 INSERT INTO `blog_posts` (`id`, `title`, `content`, `author`, `image_path`) VALUES
-(45, '1', '1', '1', '287c5085985d79149f259fa240fc9f4b.png'),
 (66, '2', '2', '2', 'ca22a9e58ce1bf4dfa8f7ff0a3010173.png'),
 (67, '3', '3', '3', '710ad2b32541f7b0affcbf4f2c0687fc.png'),
 (68, '4', '4', '4', 'e1da262764a8a2fabfa9b8678b9bb864.png'),
@@ -149,8 +148,8 @@ CREATE TABLE IF NOT EXISTS `tasks_list` (
 --
 
 INSERT INTO `tasks_list` (`id`, `title`, `body`, `due`, `created_at`, `completed`) VALUES
-(34, 'kjkj', 'hkjhkj', '2014-11-18', '2014-11-29 12:30:44', 1),
-(36, 'kjhk', 'jhkjhk', '2014-11-14', '2014-11-29 12:31:09', 1),
+(34, 'kjkj', 'hkjhkj', '2014-11-18', '2014-11-29 12:30:44', 0),
+(36, 'kjhk', 'jhkjhk', '2014-11-14', '2014-11-29 12:31:09', 0),
 (37, 'asd', 'jhjj', '2014-11-25', '2014-11-29 12:31:21', 1);
 
 -- --------------------------------------------------------
@@ -185,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', 'UGZp0rTVfxTJU5flxygRLe11e1bc04596b88fe81', '', 'admin@admin.com', '', 'BlFeNEBmdSLOHe-KOaCIX.a954414bc3fc0cc0a3', 1416666812, '6Z6aGwt0QHHuaB/GNTcNB.', 1268889823, 1417258036, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', 'UGZp0rTVfxTJU5flxygRLe11e1bc04596b88fe81', '', 'admin@admin.com', '', 'BlFeNEBmdSLOHe-KOaCIX.a954414bc3fc0cc0a3', 1416666812, '6Z6aGwt0QHHuaB/GNTcNB.', 1268889823, 1417382182, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '127.0.0.1', 'dronni3de dronni3de', 'l6ZfMI0cxiV3ZlQduWr.2ud5593291598f24f1b6', NULL, 'dronni3de@gmail.com', NULL, 'puAS1k8WsBry2Tf10pPzH.db1ac0a3d03c596954', 1416943534, NULL, 1416943455, NULL, 1, 'dronni3de', 'dronni3de', 'dronni3de', '123456789');
 
 -- --------------------------------------------------------
