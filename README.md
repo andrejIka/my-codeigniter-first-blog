@@ -29,6 +29,7 @@ MORE SIMPLE:
 
 MORE COMPLEX:
 
+- ~~i had applied the smarty template engine!!!!~~
 - ~~i had applied the HMVC!!! YAY!~~
 - ~~i had applied the calling one view on another view from Sam Dark.~~
 - ~~Great stuff! This installation collect the best Codeigniter practices.~~
