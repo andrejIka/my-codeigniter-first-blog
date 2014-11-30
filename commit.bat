@@ -1,7 +1,8 @@
 #!/bin/sh
 git checkout dev
 git add .
-git commit -am "made changes"
+set /P comment=Enter comment here:
+git commit -am "jstack %id%"
 git push origin master
 echo Press Enter...
 read
